@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "drum-machine",
-    "description": "This project is really great.",
+    "name": "Drum Machine",
+    "description":
+      "A react-native drum machine app based on freeCodeCamp curriculum with 2 sets of pads",
     "slug": "drum-machine",
     "privacy": "public",
     "sdkVersion": "28.0.0",
@@ -17,11 +18,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rajatkn.drummachine"
+    },
+    "android": {
+      "package": "com.rajatkn.drummachine"
     }
   }
 }
