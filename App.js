@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Switch } from "react-native";
-import Expo from "expo";
+import { Asset, Audio, AppLoading } from "expo";
 import Pads from "./components/ui/Pads";
 import Display from "./components/ui/Display";
 import Titlebar from "./components/ui/Titlebar";
@@ -15,14 +15,14 @@ export default class App extends React.Component {
   };
   loadAllAssets = async () => {
     for (let elem of bankOne) {
-      await Expo.Asset.loadAsync(elem.url);
+      await Asset.loadAsync(elem.url);
     }
     for (let elem of bankTwo) {
-      await Expo.Asset.loadAsync(elem.url);
+      await Asset.loadAsync(elem.url);
     }
   };
   playSound = async source => {
-    const soundObject = new Expo.Audio.Sound();
+    const soundObject = new Audio.Sound();
     try {
       await soundObject.loadAsync(source);
       await soundObject.playAsync();
@@ -48,11 +48,10 @@ export default class App extends React.Component {
   };
   componentWillMount() {
     this.loadAllAssets().then(this.setState({ isReady: true }));
-    console.log(this.state.bgColor);
   }
   render() {
     if (!this.state.isReady) {
-      return <Expo.AppLoading />;
+      return <AppLoading />;
     }
     return (
       <View style={styles.container}>
