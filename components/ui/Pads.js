@@ -11,6 +11,7 @@ const Pads = props => {
         keyTrigger={elem.keyTrigger}
         playClip={props.playClip}
         url={elem.url}
+        bgColor={props.bgColor}
       />
     );
   });

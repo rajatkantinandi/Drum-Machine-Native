@@ -10,7 +10,8 @@ export default class App extends React.Component {
   state = {
     current: "",
     isReady: false,
-    set: bankOne
+    set: bankOne,
+    bgColor: "#44a"
   };
   loadAllAssets = async () => {
     for (let elem of bankOne) {
@@ -40,13 +41,14 @@ export default class App extends React.Component {
   };
   changeSet = () => {
     if (this.state.set == bankOne) {
-      this.setState({ set: bankTwo });
+      this.setState({ set: bankTwo, bgColor: "#822" });
     } else {
-      this.setState({ set: bankOne });
+      this.setState({ set: bankOne, bgColor: "#44a" });
     }
   };
   componentWillMount() {
     this.loadAllAssets().then(this.setState({ isReady: true }));
+    console.log(this.state.bgColor);
   }
   render() {
     if (!this.state.isReady) {
@@ -57,7 +59,11 @@ export default class App extends React.Component {
         <Titlebar />
         <View style={styles.inner}>
           <Display id={this.state.current} />
-          <Pads bank={this.state.set} playClip={this.playClip} />
+          <Pads
+            bank={this.state.set}
+            playClip={this.playClip}
+            bgColor={this.state.bgColor}
+          />
           <SwitchSet changeSet={this.changeSet} />
         </View>
       </View>

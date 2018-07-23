@@ -11,7 +11,10 @@ export default class DrumPad extends Component {
   };
   render() {
     return (
-      <TouchableOpacity style={styles.container} onPress={this.handlePress}>
+      <TouchableOpacity
+        style={[styles.container, { backgroundColor: this.props.bgColor }]}
+        onPress={this.handlePress}
+      >
         <Text style={styles.text}>{this.props.keyTrigger}</Text>
       </TouchableOpacity>
     );
